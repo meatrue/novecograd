@@ -1,0 +1,11 @@
+.formFieldBlock {
+  @apply grid grid-cols-[1fr,3fr] gap-5 items-start;
+}
+
+.formLabel {
+  @apply pt-px text-sm font-semibold;
+}
+
+.formValue {
+  @apply relative text-black whitespace-pre-wrap;
+}

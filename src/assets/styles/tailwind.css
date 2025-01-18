@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Regular.woff2") format("woff2"),
+    url("../fonts/Inter-Regular") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Medium.woff2") format("woff2"),
+    url("../fonts/Inter-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-SemiBold.woff2") format("woff2"),
+    url("../fonts/Inter-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Bold.woff2") format("woff2"),
+    url("../fonts/Inter-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer utilities {
+  .wrapper-main {
+    @apply px-4 md:px-6 xl:px-8;
+  }
+
+  .wrapper-max {
+    @apply max-w-screen-3xl mx-auto;
+  }
+
+  .image-cover {
+    @apply w-full h-full object-cover;
+  }
+
+  .hover-color {
+    @apply hover:text-blue-700 transition-colors duration-300;
+  }
+
+  .hover-bg {
+    @apply hover:bg-slate-100 transition-colors duration-300;
+  }
+
+  .spinner {
+    @apply border-current border-b-transparent rounded-full animate-spin;
+  }
+
+  .table {
+    @apply bg-white rounded-md shadow;
+    @apply [&_thead_tr]:text-black [&_thead_tr]:text-left;
+    @apply [&_th]:font-semibold [&_th]:py-6 [&_th]:px-5 [&_th]:border-b [&_th]:border-b-slate-300;
+    @apply [&_tbody_tr:not(:last-child)]:border-b [&_tbody_tr]:border-b-slate-300 [&_td]:py-8 [&_td]:px-5;
+  }
+
+  .fail-message {
+    @apply text-sm text-red-400;
+  }
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  @apply flex flex-col min-h-screen overflow-x-hidden text-gray-700 bg-slate-200 font-inter font-medium;
+}
+
+#root {
+  @apply grow flex flex-col w-full;
+}

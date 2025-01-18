@@ -1,0 +1,2 @@
+export const ANIMATION_DURATION = 0.3;
+export const BG_ANIMATION_DELAY = ANIMATION_DURATION - 0.1;
