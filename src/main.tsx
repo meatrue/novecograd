@@ -8,7 +8,7 @@ import './assets/styles/tailwind.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/novecograd'>
       <App />
     </BrowserRouter>
   </StrictMode>,

@@ -39,7 +39,7 @@ export const HomePage: React.FC = () => {
 
   if (!isAuthorizationLoading && !isAuthorized) return (
     <div className="grow flex flex-col items-center">
-      <h1 className="mt-32 text-xl text-center">Для использования приложения<br />нужно авторизоваться</h1>
+      <h1 className="mt-32 text-xl text-center">Авторизуйтесь, пожалуйста</h1>
     </div>
   );
 
