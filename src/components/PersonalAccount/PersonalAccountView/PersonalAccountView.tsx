@@ -23,10 +23,10 @@ import {
   $userInfo
 } from '@/store/user';
 import { Button, CheckIcon, EditIcon, Skeleton } from '@/components/ui-kit';
-
-import styles from '@/components/PersonalAccount/PersonalAccount.module.scss';
 import { ErrorMessage } from '@/components/ErrorMessage';
 import { ActivitiesList } from '@/components/ActivitiesList';
+
+import styles from '@/components/PersonalAccount/PersonalAccount.module.scss';
 
 export const PersonalAccountView: React.FC = () => {
   const [
@@ -70,8 +70,6 @@ export const PersonalAccountView: React.FC = () => {
     modeChanged,
     messagesClosed,
   ]);
-
-  console.log('PersonalAccountView > userInfo > ', userInfo);
 
   const timerRef = React.useRef<NodeJS.Timeout | null>(null);
   

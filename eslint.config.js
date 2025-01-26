@@ -25,7 +25,17 @@ export default tseslint.config(
       ],
       indent: ['error', 2],
       semi: ['error', 'always'],
-      quotes: ['error', 'single']
+      quotes: ['error', 'single'],
+      "@typescript-eslint/ban-ts-comment": [
+        "error",
+        {
+          "minimumDescriptionLength": 3,
+          "ts-check": "allow-with-description",
+          "ts-expect-error": "allow-with-description",
+          "ts-ignore": "allow-with-description",
+          "ts-nocheck": "allow-with-description"
+        }
+      ],
     },
   },
 );
