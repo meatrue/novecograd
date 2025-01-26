@@ -11,7 +11,6 @@ export const getUserInfoFx = createEffect<
 >(async () => {
   const response = await userApi.getUserInfo();
   if (response.status !== 200) throw new AxiosError('request_error');
-  console.log('getUserInfoFx > result > ', response.data);
   return response.data;
 });
 

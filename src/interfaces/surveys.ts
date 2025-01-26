@@ -1,3 +1,5 @@
+import { IVotingOption } from '@/interfaces/common';
+
 export interface ISurvey {
   id: number;
   title: string;
@@ -8,8 +10,5 @@ export interface ISurvey {
 export interface ISurveyVoted {
   id: number;
   title: string;
-  options: {
-    value: string;
-    votes: number;
-  }[];
+  options: IVotingOption[];
 }
