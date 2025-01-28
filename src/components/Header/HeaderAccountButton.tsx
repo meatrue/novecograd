@@ -6,6 +6,7 @@ import { LoginButton } from './LoginButton';
 import {
   $authData,
   $isAuthorized,
+  $isUnAuthorizeLoading,
   authorizationReseted 
 } from '@/store/authorization';
 
@@ -19,10 +20,12 @@ export const HeaderAccountButton: React.FC<IHeaderAccountButtonProps> = ({
   const [
     isAuthorized,
     authData,
+    isUnAuthorizeLoading,
     resetAuthorization,
   ] = useUnit([
     $isAuthorized,
     $authData,
+    $isUnAuthorizeLoading,
     authorizationReseted,
   ]);  
 
@@ -30,6 +33,7 @@ export const HeaderAccountButton: React.FC<IHeaderAccountButtonProps> = ({
     <LogoutButton
       username={authData.username}
       onClick={resetAuthorization}
+      disabled={isUnAuthorizeLoading}
     />
   );
 
