@@ -9,10 +9,17 @@ import {
   personalAccountPageUnmounted
 } from '@/store/user';
 import { Skeleton } from '@/components/ui-kit';
-import { $isAuthorized, $isLoading } from '@/store/authorization';
+import {
+  $isAuthorized,
+  $isLoading,
+  $isUserInitializationLoading
+} from '@/store/authorization';
+import { $isAppLoaded } from '@/store/app';
 
 export const HomePage: React.FC = () => {
   const [
+    isAppLoaded,
+    isUserInitializationLoading,
     isAuthorized,
     isAuthorizationLoading,
     isUserInfoLoading,
@@ -20,6 +27,8 @@ export const HomePage: React.FC = () => {
     loadAccountInfo,
     clearAccountInfo,
   ] = useUnit([
+    $isAppLoaded,
+    $isUserInitializationLoading,
     $isAuthorized,
     $isLoading,
     $isUserInfoLoading,
@@ -37,11 +46,13 @@ export const HomePage: React.FC = () => {
     };
   }, [isAuthorized, loadAccountInfo, clearAccountInfo]);
 
-  if (!isAuthorizationLoading && !isAuthorized) return (
-    <div className="grow flex flex-col items-center">
-      <h1 className="mt-32 text-xl text-center">Авторизуйтесь, пожалуйста</h1>
-    </div>
-  );
+  if (isAppLoaded && !isUserInitializationLoading && !isAuthorizationLoading && !isAuthorized) {
+    return (
+      <div className="grow flex flex-col items-center">
+        <h1 className="mt-32 text-xl text-center">Авторизуйтесь, пожалуйста</h1>
+      </div>
+    );
+  }
 
   if (!isAuthorizationLoading && isAuthorized) return (
     <div className="grow flex flex-col gap-8 w-full wrapper-main wrapper-max pt-6 pb-20">

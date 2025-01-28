@@ -18,6 +18,10 @@ import { Password } from './Password';
 import { SubmitButton } from './SubmitButton';
 import { AuthorizationMessage } from './AuthorizationMessage';
 
+const CLOSE_WINDOW_DELAY_MS = 3000;
+const RESET_FORM_AFTER_CLOSING_DELAY_MS = 500;
+
+
 interface IAuthorizationForm {
   onSuccess?: () => void;
 }
@@ -55,23 +59,23 @@ export const AuthorizationForm: React.FC<IAuthorizationForm> = ({ onSuccess }) =
     if (!authData) {
       setTimeout(() => {
         closeAuthMessage();
-      }, 3000);
+      }, CLOSE_WINDOW_DELAY_MS);
       return;
     }
 
     setTimeout(() => {
       onSuccess?.();
-    }, 3000);
+    }, CLOSE_WINDOW_DELAY_MS);
 
     setTimeout(() => {
       resetForm();
-    }, 3500);
+    }, CLOSE_WINDOW_DELAY_MS + RESET_FORM_AFTER_CLOSING_DELAY_MS);
   }, [authMessage, authData, closeAuthMessage, onSuccess, resetForm]);
 
   const handleCloseMessage = React.useCallback(() => {
     if (authData) {
       onSuccess?.();
-      setTimeout(() => resetForm(), 500);
+      setTimeout(() => resetForm(), RESET_FORM_AFTER_CLOSING_DELAY_MS);
       return;
     }
     closeAuthMessage();
