@@ -51,6 +51,8 @@ export const $authMessage = createStore<string>('');
 export const $authData = createStore<IUser | null>(null);
 export const $isAuthorized = $authData.map((authData) => Boolean(authData?.username));
 
+export const $isUnAuthorizeLoading = unAuthorizeFx.pending;
+
 reset({
   clock: [formMounted, formReseted],
   target: [

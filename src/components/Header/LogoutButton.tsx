@@ -5,12 +5,14 @@ import { AccountIcon } from '@/components/ui-kit';
 
 interface IAccountButtonProps {
   username: string;
+  disabled: boolean;
   onClick: () => void;
   className?: string;
 }
 
 export const LogoutButton: React.FC<IAccountButtonProps> = ({
   username,
+  disabled,
   onClick,
   className
 }) => {
@@ -26,6 +28,7 @@ export const LogoutButton: React.FC<IAccountButtonProps> = ({
         className="flex flex-col gap-2 items-center p-2 hover-color focus-within:outline-slate-400"
         type="button"
         onClick={onClick}
+        disabled={disabled}
       >
         <span className='flex w-10 h-10'>
           <AccountIcon className='w-full h-full object-cover' />
