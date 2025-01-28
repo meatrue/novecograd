@@ -3,24 +3,20 @@ import { Outlet } from 'react-router-dom';
 import { useUnit } from 'effector-react';
 
 import { Header } from '@/components/Header';
-import { appLoaded } from '@/store/authorization';
+import { $isAppLoaded } from '@/store/app';
 
 export const Layout: React.FC = () => {
   const [
-    loadApp,
+    isAppLoaded,
   ] = useUnit([
-    appLoaded,
+    $isAppLoaded,
   ]);
-  React.useEffect(() => {
-    loadApp();
-  }, [loadApp]);
-
   return (
     <>
       <div className="pt-[100px] grow flex flex-col">
         <Header />
         <main className="grow flex flex-col">
-          <Outlet />
+          {isAppLoaded && <Outlet />}
         </main>
       </div>
 

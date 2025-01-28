@@ -7,12 +7,13 @@ import {
 import { every, not, or, and, reset } from 'patronum';
 
 import { IUser } from '@/interfaces/user';
-import * as api from './authorizationApi';
+import * as api from '@/store/authorizationApi';
 import {
   isEmpty,
   isPasswordValid,
   isUsernameValid
 } from '@/utils/authorization';
+import { appLoaded } from '@/store/app';
 
 // Внешний эффект заворачиваем, чтобы пользоваться им локально.
 // Для того, чтобы состояния в этом сторе менялись только при использовании локального эффекта из этого стора.
@@ -20,7 +21,6 @@ const getMeFx = attach({ effect: api.getMeFx });
 const authorizeFx = attach({ effect: api.authorizeFx });
 const unAuthorizeFx = attach({ effect: api.unAuthorizeFx });
 
-export const appLoaded = createEvent<void>();
 export const formMounted = createEvent<void>();
 export const formReseted = createEvent<void>();
 
@@ -30,6 +30,8 @@ export const formSubmitted = createEvent<void>();
 export const errorReseted = createEvent<void>();
 export const authMessageClosed = createEvent<void>();
 export const authorizationReseted = createEvent<void>();
+
+export const $isUserInitializationLoading = getMeFx.pending;
 
 export const $username = createStore<string>('');
 export const $usernameError = createStore<null | 'empty' | 'invalid'>(null);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useUnit } from 'effector-react';
 
 import { Layout } from '@/components/Layout';
 import { 
@@ -13,8 +14,19 @@ import {
   DocumentsPage,
 } from '@/pages';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
+import { appLoaded } from '@/store/app';
 
 export const App: React.FC = () => {
+  const [
+    loadApp,
+  ] = useUnit([
+    appLoaded,
+  ]);
+  
+  React.useLayoutEffect(() => {
+    loadApp();
+  }, [loadApp]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

@@ -27,5 +27,15 @@ export const useModal = () => {
     };
   }, [handleEscKey]);
 
+  React.useEffect(() => {
+    if (!isOpen) return;
+
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'visible';
+    };
+  }, [isOpen]);
+
   return { isOpen, open, close };
 };
