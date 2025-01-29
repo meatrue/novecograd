@@ -23,7 +23,12 @@ export const SurveysVotedList: React.FC<ISurveysListProps> = ({
     {!isLoading && !!items.length && items.map((survey) => (
       <Accordion
         key={survey.id}
-        title={survey.title}
+        title={
+          <div
+            className="[&_a]:text-blue-700 [&_a]:underline [&_a]:hover:no-underline"
+            dangerouslySetInnerHTML={{ __html: survey.title }}
+          />  
+        }
         content={
           <SurveyVotedStatistics statistics={survey.options} />
         }
