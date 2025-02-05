@@ -18,6 +18,7 @@ import { IActivity } from '@/interfaces/activities';
 const SUCCESS_MESSAGE = 'Ваши данные обновлены!';
 const INCORRECT_DATE_FORMAT_MESSAGE = 'Неверный формат даты (нужно дд.мм.гггг)';
 const REQUIRED_FIELD_MESSAGE = 'Обязательное поле';
+const FORM_SUBMIT_ERROR_MESSAGE = 'Форма заполнена некорректно';
 
 const mapUserInfoFields = (user: IUserInfoResponse): IUserInfo => ({
   peopleId: user.people_id,
@@ -126,6 +127,16 @@ export const $userActivities = createStore<IActivity[]>([])
       }))
       : []
   ));
+
+export const $formSubmitErrorMessage = combine(
+  {
+    birthErrorMessage: $userBirthErrorMessage,
+    fromErrorMessage: $userFromErrorMessage,
+  },
+  ({ birthErrorMessage, fromErrorMessage }) => (
+    (birthErrorMessage || fromErrorMessage) ? FORM_SUBMIT_ERROR_MESSAGE : ''
+  )
+);
 
 export const $isAccountFieldsChanged: Store<boolean> = combine(
   {
@@ -302,6 +313,17 @@ sample({
     return '';
   },
   target: $userFromErrorMessage,
+});
+
+sample({
+  clock: [$userBirthErrorMessage, $userFromErrorMessage],
+  fn: ([birthErrorMessage, fromErrorMessage]) => {
+    if (birthErrorMessage || fromErrorMessage) {
+      return FORM_SUBMIT_ERROR_MESSAGE;
+    }
+    return '';
+  },
+  target: $accountFormMessageFail,
 });
 
 sample({
