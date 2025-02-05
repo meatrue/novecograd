@@ -213,17 +213,6 @@ export const PersonalAccountForm: React.FC = () => {
         onReset={handleFormReset}
         onSubmit={handleFormSubmit}
       >
-        {/* <button
-          type="button"
-          className="absolute top-0 right-0 flex gap-3 items-center text-xs hover:text-blue-600 hover:border-blue-600 transition-colors duration-300 rounded border-2 text-gray-700 border-gray-700 py-1.5 px-5"
-          onClick={handleViewButtonClick}
-          disabled={isAccountFormDisabled}
-        >
-          <span className="relative w-7 h-7">
-            <EyeIcon className="image-cover" />
-          </span>
-          <span>Вернуться к просмотру</span>
-        </button> */}
         <Button
           type="button"
           size="xs"

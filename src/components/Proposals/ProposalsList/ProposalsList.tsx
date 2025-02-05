@@ -40,7 +40,12 @@ export const ProposalsList: React.FC<IProposalsListProps> = ({
           ))}
           {!isLoading && !!items.length && items.map((item, index) => (
             <tr key={index}>
-              <td>{item.title}</td>
+              <td>
+                <div
+                  className="[&_a]:text-blue-700 [&_a]:underline [&_a]:hover:no-underline"
+                  dangerouslySetInnerHTML={{ __html: item.title }}
+                />
+              </td>
               <td>{item.date}</td>
               <td>
                 <ProposalsVotingForm

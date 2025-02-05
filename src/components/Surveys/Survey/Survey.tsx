@@ -62,7 +62,6 @@ export const Survey: React.FC<ISurveyProps> = ({ id, options }) => {
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    if (selectedValue === null) return;
 
     setError(null);
     setSuccessMessage(null);
@@ -89,7 +88,7 @@ export const Survey: React.FC<ISurveyProps> = ({ id, options }) => {
       } 
     
       setSuccessMessage(message);
-      setTimeout(updateSurveys, 5000);
+      setTimeout(updateSurveys, 4000);
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {

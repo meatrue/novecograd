@@ -41,13 +41,15 @@ sample({
 
 sample({
   clock: getSurveysFx.doneData,
-  filter: (result) => Boolean(result?.surv?.length),
-  fn: (result) => result.surv.map((survey) => ({
-    id: survey.id,
-    title: survey.title,
-    date: survey.date,
-    options: survey.options,
-  })),
+  filter: (result) => Boolean(result?.surv),
+  fn: (result) => (
+    result.surv.map((survey) => ({
+      id: survey.id,
+      title: survey.title,
+      date: survey.date,
+      options: survey.options,
+    }))
+  ),
   target: $surveys,
 });
 

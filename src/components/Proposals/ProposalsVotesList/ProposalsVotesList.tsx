@@ -34,7 +34,12 @@ export const ProposalsVotesList: React.FC<IProposalsVotesListProps> = ({
       {!isLoading && !!items.length && items.map((proposal, index) => (
         <Accordion
           key={index}
-          title={proposal.title}
+          title={
+            <div
+              className="[&_a]:text-blue-700 [&_a]:underline [&_a]:hover:no-underline"
+              dangerouslySetInnerHTML={{ __html: proposal.title }}
+            /> 
+          }
           content={
             <ProposalVotesStatistics
               statistics={
