@@ -33,6 +33,11 @@ export const Survey: React.FC<ISurveyProps> = ({ id, options }) => {
   }, [selectedValue, isLoading]);
 
   React.useEffect(() => {
+    if (!successMessage) return;
+    setIsButtonsDisabled(true);
+  }, [successMessage]);
+
+  React.useEffect(() => {
     if (!error && !successMessage) return;
   
     if (error) {
@@ -88,6 +93,7 @@ export const Survey: React.FC<ISurveyProps> = ({ id, options }) => {
       } 
     
       setSuccessMessage(message);
+      setIsButtonsDisabled(true);
       setTimeout(updateSurveys, 4000);
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

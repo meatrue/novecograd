@@ -1,7 +1,7 @@
 export const VOTING_OPTIONS = [
   {
     label: 'Поддерживаю',
-    value: '2',
+    value: '0',
   },
   {
     label: 'Поддерживаю с изменениями',
@@ -9,6 +9,6 @@ export const VOTING_OPTIONS = [
   },
   {
     label: 'Не поддерживаю',
-    value: '0',
+    value: '2',
   },
 ];
